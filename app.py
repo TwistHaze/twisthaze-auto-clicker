@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import time
 import threading
 import pyautogui
+import colorama
 
 # Global variables to store the triple-click position and click times
 triple_click_position = None
@@ -28,7 +29,7 @@ def on_click(x, y, button, pressed):
             # Detected a triple-click
             triple_click_position = (x, y)
             print("\033[H\033[J")
-            print(r"""
+            print(colorama.Fore.CYAN + r"""
                        _________         _________ _______ _________            _______  _______  _______ 
                        \__   __/|\     /|\__   __/(  ____ \\__   __/  |\     /|(  ___  )/ ___   )(  ____ \
                           ) (   | )   ( |   ) (   | (    \/   ) (     | )   ( || (   ) |\/   )  || (    \/
@@ -36,12 +37,12 @@ def on_click(x, y, button, pressed):
                           | |   | |( )| |   | |   (_____  )   | |     |  ___  ||  ___  |   /   / |  __)   
                           | |   | || || |   | |         ) |   | |     | (   ) || (   ) |  /   /  | (      
                           | |   | () () |___) (___/\____) |   | |     | )   ( || )   ( | /   (_/\| (____/\
-                          )_(   (_______)\_______/\_______)   )_(     |/     \||/     \|(_______/(_______/   
-                                Halklar hükümetlerinden korkmamalı, hükümetler halktan korkmalı                                       
+                          )_(   (_______)\_______/\_______)   )_(     |/     \||/     \|(_______/(_______/
+                              Halklar hükümetlerinden korkmamalı, hükümetler halktan korkmalı.                                                          
  """)
-            print('codded by TwistHaze on GitHub')
+            print(colorama.Fore.YELLOW + 'codded by TwistHaze on GitHub')
             print(f'Triple-click detected at X: {x} Y: {y}')
-            print('Right-click to stop auto-clicker.')
+            print(colorama.Fore.RED + 'Right-click to stop auto-clicker.')
             tracking_active = True  # Start auto-clicker
             click_times.clear()  # Clear click times to avoid multiple detections
         
@@ -75,7 +76,7 @@ def keyboard_listener():
 def main():
     global tracking_active, triple_click_position
 
-    print(r"""
+    print(colorama.Fore.CYAN + r"""
                        _________         _________ _______ _________            _______  _______  _______ 
                        \__   __/|\     /|\__   __/(  ____ \\__   __/  |\     /|(  ___  )/ ___   )(  ____ \
                           ) (   | )   ( |   ) (   | (    \/   ) (     | )   ( || (   ) |\/   )  || (    \/
@@ -86,11 +87,11 @@ def main():
                           )_(   (_______)\_______/\_______)   )_(     |/     \||/     \|(_______/(_______/
                               Halklar hükümetlerinden korkmamalı, hükümetler halktan korkmalı.                                                          
  """)
-    print('                       Contact Me?')
-    print('     Discord: 404wg    -----------    Instagram 404wg     ')
+    print(colorama.Fore.YELLOW + '                       Contact Me?')
+    print(colorama.Fore.YELLOW + '     Discord: 404wg    -----------    Instagram 404wg     ')
     print('')
-    print('1. Left-click three times to find the position & start auto-clicker.')
-    print('2. Right-click to stop auto-clicker.')
+    print(colorama.Fore.RED + '1. Left-click three times to find the position & start auto-clicker.')
+    print(colorama.Fore.RED + '2. Right-click to stop auto-clicker.')
 
     mouse_thread = threading.Thread(target=mouse_listener)
     keyboard_thread = threading.Thread(target=keyboard_listener)
